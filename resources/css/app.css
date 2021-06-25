@@ -1,0 +1,7 @@
+ul.navbar-right-side {
+    float: right;
+}
+.navbar-nav>li>span {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

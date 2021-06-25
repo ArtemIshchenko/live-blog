@@ -1,0 +1,14 @@
+ul.navbar-right-side {
+    float: right;
+}
+span.post-date {
+    float: right;
+}
+section.content {
+    margin-bottom: 10px;
+}
+.clearfix { clear: both; }
+.navbar-nav>li>span {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
