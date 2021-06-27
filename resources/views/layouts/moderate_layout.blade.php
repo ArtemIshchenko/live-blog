@@ -27,6 +27,11 @@
   <link rel="stylesheet" href="/live-blog/public/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="/live-blog/public/admin/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="/live-blog/public/admin/dist/css/colorbox.css">
+    <!-- jQuery -->
+    <script src="/live-blog/public/admin/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="/live-blog/public/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -161,10 +166,6 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="/live-blog/public/admin/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="/live-blog/public/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)

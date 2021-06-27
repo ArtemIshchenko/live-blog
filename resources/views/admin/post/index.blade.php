@@ -44,6 +44,9 @@
                             <th>
                                 Статус
                             </th>
+                            <th>
+                                Причина отклонения
+                            </th>
                             <th style="width: 30%">
                             </th>
                         </tr>
@@ -62,6 +65,9 @@
                                 </td>
                                 <td>
                                     {{ Post::getStatusList()[$post->status] }}
+                                </td>
+                                <td>
+                                    {{ $post->refuse_reason }}
                                 </td>
                                 <td class="project-actions text-right">
                                     @if (!in_array($post['status'], [Post::STATUS['sendToModerate'], Post::STATUS['approved'], Post::STATUS['locked']]))

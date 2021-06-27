@@ -26,6 +26,7 @@ Route::middleware(['auth', 'role:user'])->prefix('admin-panel')->group(function 
     Route::resource('post', App\Http\Controllers\Admin\PostController::class);
     Route::get('/send-to-moderate/{id}', [App\Http\Controllers\Admin\PostController::class, 'sendToModerate'])->name('sendToModerate');
     Route::get('contact/{id}', [App\Http\Controllers\Admin\MessageController::class, 'contact'])->name('contacts');
+    Route::post('write-answer/{id}', [App\Http\Controllers\Admin\MessageController::class, 'writeAnswer'])->name('writeAnswer');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {

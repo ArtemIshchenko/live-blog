@@ -33,7 +33,7 @@ class HomeController extends Controller
 
         $user = Auth::user();
         if (!is_null($user) && ($user->getRoleNames()->search('user') !== false)) {
-            $itemsQuery->where('is_public', 'in', [Post::VISIBILITY['isPrivate'], Post::VISIBILITY['isPublic']]);
+            $itemsQuery->whereIn('is_public', [Post::VISIBILITY['isPrivate'], Post::VISIBILITY['isPublic']]);
         } else {
             $itemsQuery->where('is_public', Post::VISIBILITY['isPublic']);
         }

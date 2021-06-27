@@ -36,10 +36,20 @@ use App\Models\Post;
                 <div class="card-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Название</label>
-                      <input type="text" name="title" value={{ $post['title'] }} class="form-control" id="exampleInputEmail1" placeholder="Введите название статьи" required>
+                        <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1" placeholder="Введите название статьи" value="{{ $post['title'] }}" required>
+                        @error('title')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                          <textarea name="text" class="editor">{{ $post['text'] }}</textarea>
+                        <textarea name="text" class="editor @error('text') is-invalid @enderror">{{ $post['text'] }}</textarea>
+                        @error('text')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Видимость</label>
@@ -59,7 +69,7 @@ use App\Models\Post;
                                 <div class="form-group img-block" data-number="{{$number}}">
                                     <div class="image-block">
                                         <label for="feature_image">Изображение</label>
-                                        <img src="{{'/' . $img['path']}}" alt="" class="img-uploaded" style="display: block;">
+                                        <img src="{{'/live-blog/public/' . $img['path']}}" alt="" class="img-uploaded" style="display: block;">
                                         <input type="text" class="form-control feature_image" name="feature_image[]" value="{{$img['path']}}" readonly>
                                     </div>
                                     <a href="" class="popup_selector" data-inputid="feature_image_{{$number}}">Выбрать изображение</a>

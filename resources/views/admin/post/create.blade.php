@@ -37,10 +37,20 @@
             <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Название</label>
-                  <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Введите название статьи" required>
+                  <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1" placeholder="Введите название статьи" value="{{ old('title') }}" required>
+                    @error('title')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             <div class="form-group">
-                  <textarea name="text" class="editor"></textarea>
+                  <textarea name="text" class="editor">{{ old('text') }}</textarea>
+                    @error('text')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
             </div>
             <div class="form-group">
                 <label>Видимость</label>

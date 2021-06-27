@@ -49,7 +49,15 @@ class PostController extends Controller
     public function store(Request $request)
     {
          $request->validate([
-            'title' => 'required|unique:posts|max:128',
+            'title' => [
+                'required',
+                'max:128',
+                function ($attribute, $value, $fail) {
+                    if (Post::where($attribute, $value)->where('created_by', Auth::id())->exists()) {
+                        $fail('The '.$attribute.' is not unique.');
+                    }
+                },
+            ],
             'text' => 'string|required',
             'status' => 'integer',
             'is_public' => 'integer',
@@ -103,7 +111,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        if (in_array($post->status, [Post::STATUS['sendToModerate'], Post::STATUS['locked']])) {
+        if (in_array($post->status, [Post::STATUS['sendToModerate'], Post::STATUS['approved'], Post::STATUS['locked']])) {
             abort(404);
         }
 
@@ -164,11 +172,11 @@ class PostController extends Controller
 
     public function sendToModerate($id)
     {
-        if (in_array($post->status, [Post::STATUS['sendToModerate'], Post::STATUS['approved'], Post::STATUS['locked']])) {
-            abort(404);
-        }
         $id = intval($id);
         $postModel = Post::findOrFail($id);
+        if (in_array($postModel->status, [Post::STATUS['sendToModerate'], Post::STATUS['approved'], Post::STATUS['locked']])) {
+            abort(404);
+        }
         $postModel->status = Post::STATUS['sendToModerate'];
 
         if ($postModel->save()) {
