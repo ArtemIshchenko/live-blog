@@ -43,6 +43,12 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-lg-12">
+                    @if ($isFirstQuestion)
+                        <div class="ans">
+                            Вы: {{$firstMessageFromReader->text}}
+                            <span class="span-time">{{(new DateTime($firstMessageFromReader->created_at))->format('M j, Y h:i')}}</span>
+                        </div>
+                    @endif
                     @if (!$messages->isEmpty())
                         @foreach ($messages as $message)
                             <div class="msg">

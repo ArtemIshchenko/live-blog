@@ -122,6 +122,17 @@ class HomeController extends Controller
                 $contact->writer_id = $message->writer_id;
                 $contact->save();
             });
+
+            Contact::where('user_id', $message->writer_id)->where('writer_id', $message->reader_id)->firstOr(function () use($message) {
+                $user = User::find($message->writer_id);
+                if (!is_null($user)) {
+                    $contact = new Contact();
+                    $contact->user_id = $message->writer_id;
+                    $contact->user_name = $user->name;
+                    $contact->writer_id = $message->reader_id;
+                    $contact->save();
+                }
+            });
             $writer = User::find($message->writer_id);
             if (!is_null($writer)) {
                 $writer->count_unread_messages += 1;

@@ -44,9 +44,25 @@ class MessageController extends Controller
         }
         $user->save();
 
+        $isFirstQuestion = false;
+        $firstMessage = Message::where('writer_id', Auth::id())
+            ->where('reader_id', $id)
+            ->orderBy('created_at', 'asc')
+            ->first();
+        $firstMessageFromReader = Message::where('writer_id', $id)
+            ->where('reader_id', Auth::id())
+            ->orderBy('created_at', 'asc')
+            ->first();
+
+        if ((!is_null($firstMessage) && !is_null($firstMessageFromReader) && ($firstMessageFromReader->created_at < $firstMessage->created_at)) || (!is_null($firstMessageFromReader) && is_null($firstMessage))) {
+            $isFirstQuestion = true;
+        }
+
         return view('admin.message.contact', [
             'contact' => $contact,
             'messages' => $messages,
+            'isFirstQuestion' => $isFirstQuestion,
+            'firstMessageFromReader' => $firstMessageFromReader,
         ]);
     }
 
