@@ -1,7 +1,7 @@
 $(document).on('click','.popup_selector',function (event) {
     event.preventDefault();
     var updateID = $(this).attr('data-inputid'); // Btn id clicked
-    var elfinderUrl = '/live-blog/public/elfinder/popup/';
+    var elfinderUrl = '/elfinder/popup/';
 
     // trigger the reveal modal with elfinder inside
     var triggerUrl = elfinderUrl + updateID;
@@ -16,7 +16,7 @@ $(document).on('click','.popup_selector',function (event) {
 });
 // function to update the file selected by elfinder
 function processSelectedFile(filePath, requestingField) {
-    var item = $('a[data-inputid=' + requestingField + ']').closest('.img-block');console.log(item.find('.feature_image'));
+    var item = $('a[data-inputid=' + requestingField + ']').closest('.img-block');
     item.find('.feature_image').attr('value', filePath).trigger('change');
-    item.find('.img-uploaded').attr('src', '/live-blog/public/' + filePath).trigger('change');
+    item.find('.img-uploaded').attr('src', '/' + filePath).trigger('change');
 }

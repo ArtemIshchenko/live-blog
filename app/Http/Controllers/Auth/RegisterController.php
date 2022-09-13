@@ -71,7 +71,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $data['birthday'] = strtotime($data['birthday']);
-        $data['birthday'] = date('Y-m-d', $data['birthday']);
+//        $data['birthday'] = date('Y-m-d', $data['birthday']);
         $user = User::create([
             'name' => $data['name'],
             'birthday' => $data['birthday'],

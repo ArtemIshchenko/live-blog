@@ -69,7 +69,7 @@ use App\Models\Post;
                                 <div class="form-group img-block" data-number="{{$number}}">
                                     <div class="image-block">
                                         <label for="feature_image">Изображение</label>
-                                        <img src="{{'/live-blog/public/' . $img['path']}}" alt="" class="img-uploaded" style="display: block;">
+                                        <img src="{{'/' . $img['path']}}" alt="" class="img-uploaded" style="display: block;">
                                         <input type="text" class="form-control feature_image" name="feature_image[]" value="{{$img['path']}}" readonly>
                                     </div>
                                     <a href="" class="popup_selector" data-inputid="feature_image_{{$number}}">Выбрать изображение</a>

@@ -15,7 +15,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('birthday')->unsigned()->after('name');
-            $table->tinyInteger('gender')->after('birthday_day');
+            $table->tinyInteger('gender')->after('birthday');
             $table->string('country', 64)->after('gender');
             $table->string('city', 64)->after('country');
             $table->integer('count_unread_messages')->unsigned()->after('country');

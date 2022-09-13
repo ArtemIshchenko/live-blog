@@ -37,7 +37,7 @@
                     <ul class="related-posts list-unstyled">
                         @foreach($images as $image)
                             <li>
-                                <img src="/live-blog/public/{{$image['path']}}" alt="" class="img-thumbnail" style="margin: 5px; float: left;" width="250px" height="220px">
+                                <img src="/{{$image['path']}}" alt="" class="img-thumbnail" style="margin: 5px; float: left;" width="250px" height="220px">
                             </li>
                         @endforeach
                     </ul>

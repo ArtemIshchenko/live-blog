@@ -42,7 +42,7 @@ tinymce.init({
 function elFinderBrowser (callback, value, meta) {
     tinymce.activeEditor.windowManager.openUrl({
         title: 'File Manager',
-        url: '/live-blog/public/elfinder/tinymce5',
+        url: '/elfinder/tinymce5',
         /**
          * On message will be triggered by the child window
          *
